@@ -1,0 +1,65 @@
+--07 FILTERING AND ANALYZING NUMERICAL DATA
+/* How many invoices were billed in Brussells?
+Created by Patrick Mensah 
+Date Created: 04/07/2022
+Description: The query shows how many invoices were billed in Brussells
+*/
+
+SELECT 
+     InvoiceDate AS 'Invoice Date',
+    BillingAddress AS 'Billing Address', 
+    BillingCity AS 'Billing City',
+    Total
+FROM 
+    Invoice
+WHERE 
+    BillingCity = 'Brussels'
+ORDER BY 
+    InvoiceDate
+--7 invoices 
+
+--Asssuming we want to show how many invoices were billed in Brussells, Orlando and Paris 
+SELECT 
+     InvoiceDate AS 'Invoice Date',
+    BillingAddress AS 'Billing Address', 
+    BillingCity AS 'Billing City',
+    Total
+FROM 
+    Invoice
+WHERE 
+    BillingCity IN('Brussels','Orlando','Paris')
+ORDER BY 
+    InvoiceDate
+--28 total invoices 
+
+--Asssuming we want to show how many invoices were billed in cities that starts with B and 
+-- Whatever comes after B does not matter
+
+SELECT 
+     InvoiceDate AS 'Invoice Date',
+    BillingAddress AS 'Billing Address', 
+    BillingCity AS 'Billing City',
+    Total
+FROM 
+    Invoice
+WHERE 
+    BillingCity LIKE 'B%'
+ORDER BY 
+    InvoiceDate
+--62 Total invoices
+
+
+--Asssuming we want to show how many invoices were billed in cities that starts have B in it and 
+---the position does not matter. 
+SELECT 
+     InvoiceDate AS 'Invoice Date',
+    BillingAddress AS 'Billing Address', 
+    BillingCity AS 'Billing City',
+    Total
+FROM 
+    Invoice
+WHERE 
+    BillingCity LIKE '%B%'
+ORDER BY 
+    InvoiceDate
+-- 83 Total invoices
